@@ -66,7 +66,7 @@ def _draw_court_lines(ax, width=COURT_W, height=COURT_H, lw=1.5, color="white", 
                                     lw=lw+1, alpha=alpha, zorder=1))
 
     # Net
-    ax.plot([W/2, W/2], [0, H], **kw, lw=lw+2, zorder=2)
+    ax.plot([W/2, W/2], [0, H], color=color, alpha=alpha, solid_capstyle="round", lw=lw+2, zorder=2)
 
     # Singles sidelines (inner)
     margin_y = H * 0.13
@@ -80,11 +80,11 @@ def _draw_court_lines(ax, width=COURT_W, height=COURT_H, lw=1.5, color="white", 
     ax.plot([service_x_right, service_x_right], [margin_y, H-margin_y], **kw, zorder=1)
 
     # Centre service line
-    ax.plot([W/2, W/2], [margin_y, H-margin_y], **kw, lw=lw-0.5, zorder=1)
+    ax.plot([W/2, W/2], [margin_y, H-margin_y], color=color, alpha=alpha, solid_capstyle="round", lw=lw-0.5, zorder=1)
 
     # Baselines
-    ax.plot([0, 0], [0, H], **kw, lw=lw+1, zorder=1)
-    ax.plot([W, W], [0, H], **kw, lw=lw+1, zorder=1)
+    ax.plot([0, 0], [0, H], color=color, alpha=alpha, solid_capstyle="round", lw=lw+1, zorder=1)
+    ax.plot([W, W], [0, H], color=color, alpha=alpha, solid_capstyle="round", lw=lw+1, zorder=1)
 
 
 # ─────────────────────────── Heatmap generator ───────────────────────────────
@@ -463,8 +463,7 @@ class TennisAnalytics:
             ax.text(hx, 0.92, h, transform=ax.transAxes,
                     color="#556677", fontsize=6.5, ha="center", va="center",
                     fontweight="bold", fontfamily="monospace")
-        ax.axhline(0.88, color="#1E2A38", lw=0.8,
-                   transform=ax.get_xaxis_transform())
+        ax.axhline(0.88, color="#1E2A38", lw=0.8)
 
         # Player rows
         for ridx, (tid, st) in enumerate(player_stats.items()):
